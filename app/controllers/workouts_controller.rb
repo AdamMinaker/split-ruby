@@ -8,7 +8,7 @@ class WorkoutsController < ApplicationController
 
   # GET /workouts/1 or /workouts/1.json
   def show
-    @exercises = Exercise.where(params[:id])
+    @exercises = Exercise.where("workout_id = #{params[:id]}")
   end
 
   # GET /workouts/new

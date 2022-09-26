@@ -1,21 +1,23 @@
 <div id="<%= dom_id workout %>">
   <div class="d-flex justify-content-between">
-    <h2><%= workout.name %></h2>
+    <%if action_name == 'show'%>
+      <h2><%= workout.name %></h2>
+    <%end%>
     <% if action_name != "show" %>
+      <%= link_to workout.name, workout, class: "" %>
       <div>
-        <%= link_to "View", workout, class: "btn btn-sm btn-primary" %>
-        <%= link_to 'Edit', edit_workout_path(workout), class: "btn btn-sm btn-primary" %>
+        <%= link_to 'Edit', edit_workout_path(workout), class: "btn btn-sm btn-outline-primary" %>
       </div>
     <% end %>
   </div>
   <% if action_name == "show" %>
     <p class="ms-2"><%= workout.description %></p>
     <h4>Exercises:</h4>
-    <div class="ms-2">
-      <% @exercises.each do |exercise| %>
-      <p><%= exercise.name %></p>
-      <%end%>
-    </div>
+    <% @exercises.each do |exercise| %>
+      <div class="list-group">
+        <%= link_to exercise.name, exercise, class: "list-group-item list-group-item-action my-1" %>
+      </div>
+    <% end %>
   <% end %>
   <hr class="mt-2">
 </div>
