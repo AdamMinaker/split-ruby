@@ -75,4 +75,5 @@ gem "tailwindcss-rails", "~> 2.0"
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'bootstrap', '~> 5.2.1'
 gem 'jquery-rails'
+gem 'bootstrap-icons'
 gem 'bootstrap-icons-helper'

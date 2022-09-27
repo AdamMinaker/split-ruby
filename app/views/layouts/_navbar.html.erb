@@ -1,6 +1,8 @@
 <nav class="navbar navbar-light bg-light me-3">
-
-  <a class="navbar-brand ms-3" href=<%= workouts_path %>>Split</a>
+  <div class="d-flex">
+    <%= bootstrap_icon "lightning", width: 25, height: 25, fill: "#0d6efd", class: "ms-3 mt-2" %>
+    <a class="navbar-brand" href=<%= workouts_path %>>Split</a>
+  </div>
   <form class="form-inline">
     <%= link_to "View Workouts", workouts_path, class: "btn btn-outline-secondary" %>
     <%= link_to "About", about_path, class: "btn btn-outline-secondary" %>
