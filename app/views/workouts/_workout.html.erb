@@ -13,6 +13,9 @@
   <% if action_name == "show" %>
     <p class="ms-2"><%= workout.description %></p>
     <h4>Exercises</h4>
+    <% if @exercises.blank? %>
+      <p>No exercises yet</p>
+    <% end %>
     <% @exercises.each do |exercise| %>
       <div class="list-group">
         <%= link_to exercise.name, exercise, class: "list-group-item list-group-item-action my-1" %>

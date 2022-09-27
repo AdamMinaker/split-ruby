@@ -5,6 +5,9 @@
 
   <p class="ms-2"><%= exercise.description %></p>
   <h4>Recent sets</h4>
+  <% if @sessions.blank? %>
+    <p>No sets yet</p>
+  <% end %>
   <% @sessions.each do |session| %>
     <% set = "Reps: #{session.reps} Weight: #{session.weight} lbs"%>
     <div class="list-group">
