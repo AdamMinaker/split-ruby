@@ -14,14 +14,14 @@
   <div class="my-5 col-lg-1">
     <%= form.label :weight %>
     <div class="d-flex">
-      <%= form.number_field :weight, class: "form-control mt-1" %>
+      <%= form.number_field :weight, min: 0, class: "form-control mt-1" %>
       <strong class="mt-3 ms-2">lbs</strong>
     </div>
   </div>
 
   <div class="my-5 col-lg-1">
     <%= form.label :reps %>
-    <%= form.number_field :reps, class: "form-control mt-1" %>
+    <%= form.number_field :reps, min: 0, class: "form-control mt-1" %>
   </div>
 
   <div class="my-5">
