@@ -4,7 +4,7 @@
       <h2><%= workout.name %></h2>
     <%end%>
     <% if action_name != "show" %>
-      <%= link_to workout.name, workout, class: "" %>
+      <%= link_to workout.name, workout %>
       <div>
         <%= link_to 'Edit', edit_workout_path(workout), class: "btn btn-sm btn-outline-primary" %>
       </div>
@@ -12,12 +12,14 @@
   </div>
   <% if action_name == "show" %>
     <p class="ms-2"><%= workout.description %></p>
-    <h4>Exercises:</h4>
+    <h4>Exercises</h4>
     <% @exercises.each do |exercise| %>
       <div class="list-group">
         <%= link_to exercise.name, exercise, class: "list-group-item list-group-item-action my-1" %>
       </div>
     <% end %>
+    <%= link_to 'Add exercise', "/exercises/new?workout_id=#{workout.id}", class: "btn btn-primary mt-1" %>
+
   <% end %>
   <hr class="mt-2">
 </div>

@@ -6,10 +6,9 @@
 
     <%= render @session %>
 
-    <%= link_to 'Edit this session', edit_session_path(@session), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Destroy this session', session_path(@session), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <div class="inline-block d-flex ml-2 mt-1">
+      <%= link_to 'Edit', edit_session_path(@session), class: "btn btn-sm btn-outline-primary me-1" %>
+      <%= button_to 'Delete', session_path(@session), method: :delete, class: "btn btn-sm btn-outline-primary" %>
     </div>
-    <%= link_to 'Back to sessions', sessions_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>

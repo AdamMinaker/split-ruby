@@ -1,22 +1,16 @@
 <div id="<%= dom_id exercise %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
+  <h2>
     <%= exercise.name %>
-  </p>
+  </h2>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= exercise.description %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Workout:</strong>
-    <%= exercise.workout_id %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this exercise", exercise, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this exercise', edit_exercise_path(exercise), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
+  <p class="ms-2"><%= exercise.description %></p>
+  <h4>Recent sets</h4>
+  <% @sessions.each do |session| %>
+    <% set = "Reps: #{session.reps} Weight: #{session.weight} lbs"%>
+    <div class="list-group">
+      <%= link_to set, session, class: "list-group-item list-group-item-action my-1" %>
+    </div>
   <% end %>
+  <%= link_to 'Add set', "/sessions/new?exercise_id=#{exercise.id}", class: "btn btn-sm btn-primary my-1" %>
+  <hr class="mt-2">
 </div>

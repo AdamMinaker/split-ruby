@@ -12,6 +12,8 @@ class SessionsController < ApplicationController
 
   # GET /sessions/new
   def new
+    @exercise_id = params[:exercise_id]
+    @exercise = Exercise.find(params[:exercise_id])
     @session = Session.new
   end
 
@@ -22,10 +24,11 @@ class SessionsController < ApplicationController
   # POST /sessions or /sessions.json
   def create
     @session = Session.new(session_params)
+    @exercise = Exercise.where("id = #{@session.exercise_id}").first
 
     respond_to do |format|
       if @session.save
-        format.html { redirect_to session_url(@session), notice: "Session was successfully created." }
+        format.html { redirect_to exercise_url(@exercise), notice: "Session was successfully created." }
         format.json { render :show, status: :created, location: @session }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +55,7 @@ class SessionsController < ApplicationController
     @session.destroy
 
     respond_to do |format|
-      format.html { redirect_to sessions_url, notice: "Session was successfully destroyed." }
+      format.html { redirect_to workouts_url, notice: "Session was successfully destroyed." }
       format.json { head :no_content }
     end
   end

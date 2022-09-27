@@ -8,10 +8,13 @@ class ExercisesController < ApplicationController
 
   # GET /exercises/1 or /exercises/1.json
   def show
+    @sessions = Session.where("exercise_id = #{params[:id]}")
   end
 
   # GET /exercises/new
   def new
+    @workout_id = params[:workout_id]
+    @workout = Workout.find(params[:workout_id])
     @exercise = Exercise.new
   end
 
@@ -22,10 +25,11 @@ class ExercisesController < ApplicationController
   # POST /exercises or /exercises.json
   def create
     @exercise = Exercise.new(exercise_params)
+    @workout = Workout.where("id = #{@exercise.workout_id}").first
 
     respond_to do |format|
       if @exercise.save
-        format.html { redirect_to exercise_url(@exercise), notice: "Exercise was successfully created." }
+        format.html { redirect_to workout_url(@workout), notice: "Exercise was successfully created." }
         format.json { render :show, status: :created, location: @exercise }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +56,7 @@ class ExercisesController < ApplicationController
     @exercise.destroy
 
     respond_to do |format|
-      format.html { redirect_to exercises_url, notice: "Exercise was successfully destroyed." }
+      format.html { redirect_to workouts_url, notice: "Exercise was successfully destroyed." }
       format.json { head :no_content }
     end
   end
