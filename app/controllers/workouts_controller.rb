@@ -3,7 +3,12 @@ class WorkoutsController < ApplicationController
 
   # GET /workouts or /workouts.json
   def index
-    @workouts = Workout.all
+    if params[:search].blank?
+      @workouts = Workout.all
+    else
+      @search = params[:search].downcase
+      @workouts = Workout.all.where("lower(name) LIKE :search", search: "%#{@search}%")
+    end
   end
 
   # GET /workouts/1 or /workouts/1.json
