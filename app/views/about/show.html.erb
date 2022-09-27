@@ -1,1 +1,21 @@
+<h1>About this app</h1>
+<div class="col-lg-6">
+  <p>
+    This application (Split) will track physical workouts for the user. The dataset below
+    will model the business process by allowing a <b>Workout</b> to have many <b>Exercises</b>
+    and an <b>Exercise</b> to have many <b>Sets</b>.
+  </p>
+  <p>
+    The database will have 3 tables; <b>Workout</b>, <b>Exercise</b>, and <b>Set</b>. The columns on the
+    <b>Workout</b> table will simply be <b>name :string</b> and <b>description :text</b>. A <b>Workout</b> will
+    have many <b>Exercises</b> so the <b>Exercise</b> table will have a <b>workout_id</b> foreign key
+    along with a <b>name :string</b> and a <b>description :text</b>. For each <b>Exercise</b> there will
+    be many <b>Sets</b> so the <b>Set</b> table will have an <b>exercise_id</b> foreign key along with the
+    number of <b>reps :int</b> and amount of <b>weight :int</b> (as pounds).
+  </p>
+  <p>
+    Users will enter their own data, it won't be pulled from an external API so the data
+    models will be populated by <b>Faker</b> or from a <b>.csv</b> for this project.
+  </p>
+</div>
 <img src=<%=@image_path%> alt="Split ERD diagram">
