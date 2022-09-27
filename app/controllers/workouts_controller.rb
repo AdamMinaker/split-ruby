@@ -4,10 +4,10 @@ class WorkoutsController < ApplicationController
   # GET /workouts or /workouts.json
   def index
     if params[:search].blank?
-      @workouts = Workout.all
+      @workouts = Workout.all.order('created_at DESC')
     else
       @search = params[:search].downcase
-      @workouts = Workout.all.where("lower(name) LIKE :search", search: "%#{@search}%")
+      @workouts = Workout.all.where("lower(name) LIKE :search", search: "%#{@search}%").order('created_at DESC')
     end
   end
 

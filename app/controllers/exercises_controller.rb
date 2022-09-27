@@ -3,12 +3,12 @@ class ExercisesController < ApplicationController
 
   # GET /exercises or /exercises.json
   def index
-    @exercises = Exercise.all
+    @exercises = Exercise.all.order('created_at DESC')
   end
 
   # GET /exercises/1 or /exercises/1.json
   def show
-    @sessions = Session.where("exercise_id = #{params[:id]}")
+    @sessions = Session.where("exercise_id = #{params[:id]}").order('created_at DESC')
   end
 
   # GET /exercises/new

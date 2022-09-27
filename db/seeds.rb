@@ -13,10 +13,6 @@ Workout.destroy_all
 # Inserting products with .csv
 require "csv"
 
-load_csv('workouts')
-load_csv('exercises')
-load_csv('sessions')
-
 def load_csv(type)
   csv_file = Rails.root.join("db/#{type}.csv")
   csv_data = File.read(csv_file)
@@ -47,6 +43,10 @@ def load_csv(type)
     end
   end
 end
+
+load_csv('workouts')
+load_csv('exercises')
+load_csv('sessions')
 
 # Inserting products with Faker
 # # Create 50 workouts
