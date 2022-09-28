@@ -9,6 +9,8 @@ class ExercisesController < ApplicationController
   # GET /exercises/1 or /exercises/1.json
   def show
     @sessions = Session.where("exercise_id = #{params[:id]}").order('created_at DESC')
+    @workout_id = params[:workout_id]
+    @workouts = Workout.where
   end
 
   # GET /exercises/new
