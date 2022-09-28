@@ -14,5 +14,6 @@
       <%= button_tag "Search", :class => "btn btn-primary", :name => nil%>
     <% end %>
     <%= render @workouts %>
+    <div><%= paginate @workouts %></div>
   </div>
 </div>

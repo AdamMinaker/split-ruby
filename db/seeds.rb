@@ -10,6 +10,24 @@ Session.destroy_all
 Exercise.destroy_all
 Workout.destroy_all
 
+# Inserting dumb data with Faker
+# Create 50 workouts
+50.times do
+  workout = Workout.new(:name =>  Faker::Dessert.variety, :description => Faker::ChuckNorris.fact)
+  workout.save
+
+  # Create 5 exercises for each workout
+  5.times do
+    exercise = Exercise.new(:name => Faker::Dessert.variety, :description => Faker::Lorem.sentence(word_count: 3, supplemental: false, random_words_to_add: 4), :workout => workout)
+    exercise.save
+
+    # Create 3 sessions for each exercise
+    3.times do
+      Session.new(:weight => Faker::Number.decimal_part(digits: 2), :reps => Faker::Number.decimal_part(digits: 2), :exercise => exercise).save
+    end
+  end
+end
+
 # Inserting products with .csv
 require "csv"
 
@@ -47,21 +65,3 @@ end
 load_csv('workouts')
 load_csv('exercises')
 load_csv('sessions')
-
-# Inserting products with Faker
-# # Create 50 workouts
-# 50.times do
-#   workout = Workout.new(:name =>  Faker::Emotion.noun, :description => Faker::ChuckNorris.fact)
-#   workout.save
-
-#   # Create 5 exercises for each workout
-#   5.times do
-#     exercise = Exercise.new(:name => Faker::Dessert.variety, :description => Faker::Lorem.sentence(word_count: 3, supplemental: false, random_words_to_add: 4), :workout => workout)
-#     exercise.save
-
-#     # Create 3 sessions for each exercise
-#     3.times do
-#       Session.new(:weight => Faker::Number.decimal_part(digits: 2), :reps => Faker::Number.decimal_part(digits: 2), :exercise => exercise).save
-#     end
-#   end
-# end
