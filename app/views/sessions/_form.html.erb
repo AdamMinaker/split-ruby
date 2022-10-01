@@ -24,9 +24,15 @@
     <%= form.number_field :reps, min: 0, class: "form-control mt-1" %>
   </div>
 
-  <div class="my-5">
-    <%= form.text_field :exercise_id, :readonly => true, type: 'hidden' %>
-  </div>
+  <% if action_name == 'edit' %>
+    <div class="my-5">
+      <%= form.text_field :exercise_id, type: 'hidden', :readonly => true %>
+    </div>
+  <% else %>
+    <div class="my-5">
+      <%= form.text_field :exercise_id, value: @exercise_id, type: 'hidden', :readonly => true %>
+    </div>
+  <% end %>
 
   <div class="inline">
     <%= form.submit class: "btn btn-primary" %>
