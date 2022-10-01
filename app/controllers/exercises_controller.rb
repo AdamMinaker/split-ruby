@@ -10,6 +10,8 @@ class ExercisesController < ApplicationController
   def show
     @sessions = Session.where("exercise_id = #{params[:id]}").order('created_at DESC')
     @workout_id = params[:workout_id]
+    @exericse = Exercise.where("id = #{params[:id]}")
+    @workout = Workout.where("id = #{@exercise.id}")
     @workouts = Workout.where
   end
 
@@ -58,7 +60,7 @@ class ExercisesController < ApplicationController
     @exercise.destroy
 
     respond_to do |format|
-      format.html { redirect_to workouts_url, notice: "Exercise was successfully destroyed." }
+      format.html { redirect_to "/workouts/#{@exercise.workout_id}", notice: "Exercise was successfully destroyed." }
       format.json { head :no_content }
     end
   end

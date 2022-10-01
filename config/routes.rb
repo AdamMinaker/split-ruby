@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resources :workouts do
     get '/page/:page', action: :index, on: :collection
   end
-  #root "workouts#index"
+  root "workouts#index"
   get 'about', to: 'about#show'
 end

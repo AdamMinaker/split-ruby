@@ -24,7 +24,6 @@ class SessionsController < ApplicationController
   # POST /sessions or /sessions.json
   def create
     @session = Session.new(session_params)
-    @exercise = Exercise.where("id = #{@session.exercise_id}").first
 
     respond_to do |format|
       if @session.save
@@ -55,7 +54,7 @@ class SessionsController < ApplicationController
     @session.destroy
 
     respond_to do |format|
-      format.html { redirect_to workouts_url, notice: "Session was successfully destroyed." }
+      format.html { redirect_to "/exercises/#{@session.exercise_id}", notice: "Session was successfully destroyed." }
       format.json { head :no_content }
     end
   end
